@@ -1,24 +1,24 @@
 const poster = require('./poster')
 const dataCache = require('./dataCache')
+const dataRequester = require('./dataRequester')
 
 
 const startScheduler = (() => {
     console.log("Post scheduler has started!")
 
-    poster.makePost()
-
+    
     // To Do: Scheduler logic...
 })
 
 
 function newPost()
 {
-    dataCache.update();
-    poster.makePost();
+    dataRequester.requestPollenToronto;
+    // poster.makePost();
 }
 
-setInterval(newPost, 3000);
-
+// setInterval(newPost, 3000000);
+newPost;
 
 module.exports = {
     startScheduler
