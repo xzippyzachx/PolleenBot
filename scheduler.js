@@ -12,6 +12,16 @@ const startScheduler = (() => {
     })
 })
 
+
+function newPost()
+{
+    dataRequester.requestPollenToronto;
+    // poster.makePost();
+}
+
+// setInterval(newPost, 3000000);
+newPost;
+
 module.exports = {
     startScheduler
 }
