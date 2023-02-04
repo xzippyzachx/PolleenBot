@@ -1,4 +1,7 @@
 require('dotenv').config();
 const scheduler = require('./scheduler')
+const test = require('./dataRequester');
 
-scheduler.startScheduler()
+test.requestPollenToronto();
+
+// scheduler.startScheduler()

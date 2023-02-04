@@ -1,3 +1,4 @@
+const cache = require("./dataCache");
 
 const requestPollenToronto = (() => {
 
@@ -8,6 +9,7 @@ const requestPollenToronto = (() => {
         response.json().then((json) => {
             console.log(JSON.stringify(json))
 
+            cache.updateCache(json)
             // Pass json to the data cache here
 
         }).catch((err) => {
@@ -17,6 +19,7 @@ const requestPollenToronto = (() => {
         console.log("Unable to fetch -", err)
     })
 })
+
 
 module.exports = {
     requestPollenToronto
