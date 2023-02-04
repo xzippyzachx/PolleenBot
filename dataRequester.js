@@ -1,5 +1,4 @@
 const cache = require("./dataCache");
-// const fetch = require("node-fetch");
 
 const requestPollenToronto = (() => {
 
