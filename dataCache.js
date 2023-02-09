@@ -29,12 +29,12 @@ const updateCache = ( (split) => {
     obj["Entries"].push(entry);
     cache = JSON.stringify(obj);
     writeCache(cache);
-    
+
     console.log(JSON.stringify(cache));
     console.log(`Cache updated at ${Date.now()}`)
 })
 
-const sendCache = ( () => {
+const fetch = ( () => {
     return cache;
 })
 
@@ -76,7 +76,7 @@ const populateCache = ( () =>
 
 
 module.exports = {
-    sendCache,
+    fetch,
     updateRequired,
     updateCache,
     populateCache
