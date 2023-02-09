@@ -1,5 +1,6 @@
 const cache = require("./dataCache");
 
+
 const requestPollenToronto = (() => {
 
     let key = process.env.TOMORROW_IO_KEY
@@ -21,6 +22,12 @@ const requestPollenToronto = (() => {
 })
 
 
+const getTestData = ( () => {
+    cache.populateCache();
+})
+
+
 module.exports = {
-    requestPollenToronto
+    requestPollenToronto,
+    getTestData
 }

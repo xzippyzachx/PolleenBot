@@ -1,4 +1,21 @@
-let cache = '{"Entries":[]}';
+const fs = require('fs');
+const cacheFile = './dataCache.json';
+let cache = fs.readFile(cacheFile, 'utf8', (err,jsonString) => {
+    if (err)
+    {console.log(`File read failed: ${err}`); cache = '{"An Error Has Occurred":":(")}'; return}
+    cache = jsonString;
+})
+
+const writeCache = ( (newCache) => {
+
+    fs.writeFile(cacheFile, newCache, err =>
+        {
+            if (err) {
+                console.log('Error writing file', err)
+            }
+        })
+
+})
 
 const updateCache = ( (split) => {
     // let split = JSON.parse(newEntry)
@@ -11,6 +28,9 @@ const updateCache = ( (split) => {
     var obj = JSON.parse(cache);
     obj["Entries"].push(entry);
     cache = JSON.stringify(obj);
+    writeCache(cache);
+    
+    console.log(JSON.stringify(cache));
     console.log(`Cache updated at ${Date.now()}`)
 })
 
@@ -43,9 +63,21 @@ const updateRequired = ( () => {
     return false;
 })
 
+const populateCache = ( () => 
+{
+    fs.readFile('./testData.json', 'utf8', (err,jsonString) => {
+        if (err)
+        {console.log(`file read failed: ${err}`); cache = "{\"err\"}"; return}
+        console.log(jsonString)
+        cache = jsonString;
+        writeCache(jsonString);
+    })
+})
+
 
 module.exports = {
     sendCache,
     updateRequired,
-    updateCache
+    updateCache,
+    populateCache
 }
