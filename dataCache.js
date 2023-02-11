@@ -1,10 +1,14 @@
 const fs = require('fs');
 const cacheFile = './dataCache.json';
-let cache = fs.readFile(cacheFile, 'utf8', (err,jsonString) => {
+
+
+let EntriesArray = JSON.parse(fs.readFileSync(cacheFile, 'utf8', (err,jsonString) => {
     if (err)
     {console.log(`File read failed: ${err}`); cache = '{"An Error Has Occurred":":(")}'; return}
-    cache = jsonString;
-})
+})).Entries;
+
+let cache = EntriesArray[EntriesArray.length - 1];
+
 
 const writeCache = ( (newCache) => {
 
@@ -38,30 +42,30 @@ const fetch = ( () => {
     return cache;
 })
 
-const updateRequired = ( () => {
-    if(Object.keys(JSON.parse(cache).Entries) <= 6) {console.log(false); return false;}
+// const updateRequired = ( () => {
+//     if(Object.keys(JSON.parse(cache).Entries) <= 6) {console.log(false); return false;}
 
-    let average = new Array(3); 
-    let cacheRead = JSON.parse(cache);
-    for(let i = 0; i < 7; i++)
-    {
-        for(value in cacheRead.Entries[i].values)
-        {
-            average[0] += cacheRead.Entries[i].values.grassIndex;
-            average[1] += cacheRead.Entries[i].values.treeIndex;
-            average[2] += cacheRead.Entries[i].values.weedIndex;
-        }
-    }
-    average[0] /= 7;
-    average[1] /= 7;
-    average[2] /= 7;
+//     let average = new Array(3); 
+//     let cacheRead = JSON.parse(cache);
+//     for(let i = 0; i < 7; i++)
+//     {
+//         for(value in cacheRead.Entries[i].values)
+//         {
+//             average[0] += cacheRead.Entries[i].values.grassIndex;
+//             average[1] += cacheRead.Entries[i].values.treeIndex;
+//             average[2] += cacheRead.Entries[i].values.weedIndex;
+//         }
+//     }
+//     average[0] /= 7;
+//     average[1] /= 7;
+//     average[2] /= 7;
 
-    if(Math.abs(average[0]-cacheRead.Entries[0].values.grassIndex) > 3 || Math.abs(average[1]-cacheRead.Entries[0].values.treeIndex) > 3 || Math.abs(average[2]-cacheRead.Entries[0].values.weedIndex) > 3)
-    {
-        return true;
-    }
-    return false;
-})
+//     if(Math.abs(average[0]-cacheRead.Entries[0].values.grassIndex) > 3 || Math.abs(average[1]-cacheRead.Entries[0].values.treeIndex) > 3 || Math.abs(average[2]-cacheRead.Entries[0].values.weedIndex) > 3)
+//     {
+//         return true;
+//     }
+//     return false;
+// })
 
 const populateCache = ( () => 
 {
@@ -77,7 +81,7 @@ const populateCache = ( () =>
 
 module.exports = {
     fetch,
-    updateRequired,
+    // updateRequired,
     updateCache,
     populateCache
 }

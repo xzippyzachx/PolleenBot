@@ -1,8 +1,13 @@
 require('dotenv').config();
 const scheduler = require('./scheduler')
 const test = require('./dataRequester');
+const test2 = require('./dataCache');
 
-test.requestPollenToronto();
+data = test2.fetch();
+
+console.log(data.values.grassIndex);
+
+// test.requestPollenToronto();
 //.getTestData();
 
 
