@@ -2,23 +2,17 @@ const poster = require('./poster')
 const dataCache = require('./dataCache')
 const dataRequester = require('./dataRequester')
 
+const cron = require('node-cron');
 
 const startScheduler = (() => {
-    console.log("Post scheduler has started!")
+    console.log("Scheduler has started!")
 
-    
-    // To Do: Scheduler logic...
+    let dailyTask = cron.schedule("0 6 * * *", () => { // Called daily at 6 AM
+        console.log(`Running a |dailyTask| at [${new Date().toDateString()}]`)
+
+        dataRequester.requestPollenToronto()
+    })
 })
-
-
-function newPost()
-{
-    dataRequester.requestPollenToronto;
-    // poster.makePost();
-}
-
-// setInterval(newPost, 3000000);
-newPost;
 
 module.exports = {
     startScheduler
