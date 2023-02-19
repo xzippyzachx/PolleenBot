@@ -20,6 +20,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "node-cron": "^3.0.2",
+    "jsdom": "^21.1.0",
     "jsonfile": "^6.1.0",
     "node-fetch": "^2.6.9"
   }
