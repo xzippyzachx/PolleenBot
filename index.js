@@ -7,7 +7,7 @@ data = test2.fetch();
 
 console.log(data.values.grassIndex);
 
-// test.requestPollenToronto();
+test.requestPollenToronto();
 //.getTestData();
 
 
