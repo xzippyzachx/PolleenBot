@@ -9,7 +9,6 @@ let EntriesArray = JSON.parse(fs.readFileSync(cacheFile, 'utf8', (err,jsonString
 
 let cache = EntriesArray[EntriesArray.length - 1];
 
-
 const writeCache = ( (newCache) => {
 
     fs.writeFile(cacheFile, newCache, err =>
@@ -22,14 +21,12 @@ const writeCache = ( (newCache) => {
 })
 
 const updateCache = ( (split) => {
-    // let split = JSON.parse(newEntry)
-
     let entryTime = split.data.timelines[0].intervals[0].startTime;
     let entryValues = split.data.timelines[0].intervals[0].values;
 
     let entry = JSON.parse(`{"Time":"${entryTime}", "values":${JSON.stringify(entryValues)}}`);
-
-    var obj = JSON.parse(cache);
+    
+    let obj = JSON.parse(cache);
     obj["Entries"].push(entry);
     cache = JSON.stringify(obj);
     writeCache(cache);
@@ -42,30 +39,31 @@ const fetch = ( () => {
     return cache;
 })
 
-// const updateRequired = ( () => {
-//     if(Object.keys(JSON.parse(cache).Entries) <= 6) {console.log(false); return false;}
+//checks if the difference between yesterday's cached result and today's result in todays reqading being different from yesterdays. If so, returns true. (assumes the groupings {0,1}, {2,3}, {4,5})
+const updateRequired = ( () => {
+    let check = EntriesArray[EntriesArray.length - 1]; // yesterday's cached result
 
-//     let average = new Array(3); 
-//     let cacheRead = JSON.parse(cache);
-//     for(let i = 0; i < 7; i++)
-//     {
-//         for(value in cacheRead.Entries[i].values)
-//         {
-//             average[0] += cacheRead.Entries[i].values.grassIndex;
-//             average[1] += cacheRead.Entries[i].values.treeIndex;
-//             average[2] += cacheRead.Entries[i].values.weedIndex;
-//         }
-//     }
-//     average[0] /= 7;
-//     average[1] /= 7;
-//     average[2] /= 7;
+    //each value compared between 0 and 1
+    if((cache.values.grassIndex <= 1 && check.values.grassIndex >= 2) || (cache.values.weedIndex <= 1 && check.values.weedIndex >= 2) || (cache.values.treeIndex <= 1 && check.values.treeIndex >= 2))
+    {
+        console.log("a")
+        return true;
+    }
+    //each value compared between 2 and 3
+    if(  ((2 <= cache.values.grassIndex && cache.values.grassIndex <= 4) && (2 > check.values.grassIndex || check.values.grassIndex < 4))   ||   ((2 <= cache.values.weedIndex && cache.values.weedIndex <= 4 ) && (2 > check.values.weedIndex || check.values.weedIndex < 4))   ||   ( ( 2 <= cache.values.treeIndex && cache.values.treeIndex <= 4) && (2 > check.values.treeIndex || check.values.treeIndex < 4)))
+    {
+        console.log("b")
+        return true;
+    }
+    //each value compared between 4 and 5
+    if((cache.values.grassIndex >= 4 && check.values.grassIndex <= 3) || (cache.values.weedIndex >= 4 && check.values.weedIndex <= 3) || (cache.values.treeIndex >= 4 && check.values.treeIndex <= 3))
+    {
+        console.log("c")
+        return true;
+    }
 
-//     if(Math.abs(average[0]-cacheRead.Entries[0].values.grassIndex) > 3 || Math.abs(average[1]-cacheRead.Entries[0].values.treeIndex) > 3 || Math.abs(average[2]-cacheRead.Entries[0].values.weedIndex) > 3)
-//     {
-//         return true;
-//     }
-//     return false;
-// })
+    return false;
+})
 
 const populateCache = ( () => 
 {
@@ -81,7 +79,7 @@ const populateCache = ( () =>
 
 module.exports = {
     fetch,
-    // updateRequired,
+    updateRequired,
     updateCache,
     populateCache
 }
