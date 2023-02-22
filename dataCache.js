@@ -46,19 +46,16 @@ const updateRequired = ( () => {
     //each value compared between 0 and 1
     if((cache.values.grassIndex <= 1 && check.values.grassIndex >= 2) || (cache.values.weedIndex <= 1 && check.values.weedIndex >= 2) || (cache.values.treeIndex <= 1 && check.values.treeIndex >= 2))
     {
-        console.log("a")
         return true;
     }
     //each value compared between 2 and 3
     if(  ((2 <= cache.values.grassIndex && cache.values.grassIndex <= 4) && (2 > check.values.grassIndex || check.values.grassIndex < 4))   ||   ((2 <= cache.values.weedIndex && cache.values.weedIndex <= 4 ) && (2 > check.values.weedIndex || check.values.weedIndex < 4))   ||   ( ( 2 <= cache.values.treeIndex && cache.values.treeIndex <= 4) && (2 > check.values.treeIndex || check.values.treeIndex < 4)))
     {
-        console.log("b")
         return true;
     }
     //each value compared between 4 and 5
     if((cache.values.grassIndex >= 4 && check.values.grassIndex <= 3) || (cache.values.weedIndex >= 4 && check.values.weedIndex <= 3) || (cache.values.treeIndex >= 4 && check.values.treeIndex <= 3))
     {
-        console.log("c")
         return true;
     }
 
