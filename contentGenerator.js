@@ -2,6 +2,7 @@ const dataCache = require('./dataCache')
 const {redColor,yellowColor,greenColor} = require('./colorSetting.js')
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
+const svgConvert = require('./svgConvertion.js')
 
 
 //get Information of pollen
@@ -106,6 +107,8 @@ const generate = ( () => {
     const updatedSvgFile = dom.serialize();
     fs.writeFileSync('Post.svg', updatedSvgFile);
     console.log("image editing finished!");
+
+    svgConvert.svgConvert();
 
     twitterMessage = `Pollen levels in Toronto ${time},\nTree: ${treeTextValue}\nGrass: ${grassTextValue}\nWeeds: ${weedsTextValue}`;
     console.log(twitterMessage);
