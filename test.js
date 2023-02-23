@@ -1,4 +1,4 @@
-// const {redColor,yellowColor,greenColor, treeValue, weedsValue, grassValue} = require('./constant.js');
+// const {redColor,yellowColor,greenColor, treeValue, weedsValue, grassValue} = require('./colorSetting.js');
 // const fs = require('fs');
 // const { JSDOM } = require('jsdom');
 

@@ -1,5 +1,5 @@
 const dataCache = require('./dataCache')
-const {redColor,yellowColor,greenColor} = require('./constant.js')
+const {redColor,yellowColor,greenColor} = require('./colorSetting.js')
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 
