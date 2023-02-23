@@ -19,7 +19,7 @@ var weedsTextValue = undefined;
 const getInfo = (()=>{
     pollenData = dataCache.fetch();
 
-    time = pollenData.Time;
+    time = new Date(pollenData.Time).toISOString().slice(0, 10);
     treeValue = pollenData.values.treeIndex;
     grassValue = pollenData.values.grassIndex;
     weedsValue = pollenData.values.weedIndex;
@@ -108,7 +108,8 @@ const generate = ( () => {
     console.log("image editing finished!");
 
     twitterMessage = `Pollen levels in Toronto ${time},\nTree: ${treeTextValue}\nGrass: ${grassTextValue}\nWeeds: ${weedsTextValue}`;
-    console.log(twitterMessage);
+
+    return twitterMessage;
 })
 
 
