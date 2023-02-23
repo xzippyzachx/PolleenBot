@@ -108,6 +108,7 @@ const generate = ( () => {
     fs.writeFileSync('Post.svg', updatedSvgFile);
     console.log("image editing finished!");
 
+    //convert Post.svg to Post.jpg
     svgConvert.svgConvert();
 
     twitterMessage = `Pollen levels in Toronto ${time},\nTree: ${treeTextValue}\nGrass: ${grassTextValue}\nWeeds: ${weedsTextValue}`;
