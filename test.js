@@ -56,8 +56,13 @@
 // const updatedSvgFile = dom.serialize();
 // fs.writeFileSync('Post.svg', updatedSvgFile);
 
-const contentGenerator = require('./contentGenerator')
-console.log(contentGenerator.generate());
+const poster = require('./poster.js')
+console.log(poster.makePost());
+// console.log(process.env.TWITTER_API_KEY);
+// console.log(process.env.TWITTER_API_KEY_SECRET);
+// console.log(process.env.TWITTER_ACCESS_TOKEN);
+// console.log(process.env.TWITTER_ACCESS_TOKEN_SECRET);
+// console.log(process.env.TOMORROW_IO_KEY);
 
 
 
