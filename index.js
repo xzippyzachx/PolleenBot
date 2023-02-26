@@ -4,7 +4,7 @@ const test = require('./dataRequester');
 const test2 = require('./dataCache');
 
 // data = test2.fetch();
-console.log(test2.updateRequired());
+//console.log(test2.updateRequired());
 
 // console.log(data.values.grassIndex);
 
