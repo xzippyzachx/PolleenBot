@@ -13,30 +13,31 @@ const client = new TwitterApi({
   });
 
 
-const makePost = (async () =>{
+const makePost = ((resolve, reject) =>{
     console.log("Starting Post...");
 
-    // getting twiter message
-    console.log("loading twitter message...");
-    const tweetContent  = contentGenerator.generate();
-
-    //posting 
-    console.log("posting...");
-    client.v1.uploadMedia('./Post.jpg').then((mediaID)=>{
-        client.v2
-        .tweet(tweetContent, {media: {media_ids: [mediaID]}})
-        .then((tweet) => {
-         console.log(`Tweet posted`);
+    // Getting twiter message
+    console.log("Loading twitter message...");
+    new Promise(contentGenerator.generate).then((tweetContent) => {
+        // Posting
+        console.log("Posting...");
+        client.v1.uploadMedia("./Post.jpg").then((mediaID) => {
+            client.v2
+            .tweet(tweetContent, {media: {media_ids: [mediaID]}})
+            .then(() => {
+                console.log("Tweet posted!");
+                resolve();
+            })
+            .catch((error) => {
+                reject(error);
+            });
         })
-        .catch((err) => {
-            console.error(err);
+        .catch((error) => {
+            reject(error);
         });
-    })
-    
-
-
+    });
 });
-// Call the function to make the post
+
 module.exports = {
     makePost
 }
