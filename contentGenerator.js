@@ -17,7 +17,7 @@ var treeTextValue = undefined;
 var grassTextValue = undefined;
 var weedsTextValue = undefined;
 
-const getInfo = (()=>{
+const getInfo = (() => {
     pollenData = dataCache.fetch();
 
     time = new Date(pollenData.Time).toISOString().slice(0, 10);
@@ -26,10 +26,10 @@ const getInfo = (()=>{
     weedsValue = pollenData.values.weedIndex;
 })
 
-const generate = ( () => {
+const generate = ((resolve, reject) => {
     getInfo();
 
-    console.log("start editing image");
+    console.log("Started editing image");
     const svgFile = fs.readFileSync('./Post.svg', 'utf-8');
     const dom = new JSDOM(svgFile, { contentType: 'image/svg+xml' });
     const document = dom.window.document;
@@ -53,8 +53,8 @@ const generate = ( () => {
     if(treeValue >= 0 && treeValue <= 1){
         treeElement1.style = greenColor;
         treeElement2.style = greenColor;
-        treeText.textContent = "low";
-        treeTextValue = "low";
+        treeText.textContent = "Low";
+        treeTextValue = "Low";
     }else if(treeValue >= 2 && treeValue <= 3){  
         treeElement1.style = yellowColor;
         treeElement2.style = yellowColor;
@@ -71,8 +71,8 @@ const generate = ( () => {
     if(grassValue >= 0 && grassValue <= 1){
         grassElement1.style = greenColor;
         grassElement2.style = greenColor;
-        grassText.textContent = "low";
-        grassTextValue = "low";
+        grassText.textContent = "Low";
+        grassTextValue = "Low";
     }else if(grassValue >= 2 && grassValue <= 3){  
         grassElement1.style = yellowColor;
         grassElement2.style = yellowColor;
@@ -85,13 +85,12 @@ const generate = ( () => {
         grassTextValue = "High";
     }
 
-
     //weeds
     if(weedsValue >= 0 && weedsValue <= 1){
         weedsElement1.style = greenColor;
         weedsElement2.style = greenColor;
-        weedsText.textContent = "low";
-        weedsTextValue = "low";
+        weedsText.textContent = "Low";
+        weedsTextValue = "Low";
     }else if(weedsValue >= 2 && weedsValue <= 3){  
         weedsElement1.style = yellowColor;
         weedsElement2.style = yellowColor;
@@ -104,20 +103,21 @@ const generate = ( () => {
         weedsTextValue = "High";
     }
 
-    const updatedSvgFile = dom.serialize();
+    let updatedSvgFile = dom.serialize();
     fs.writeFileSync('Post.svg', updatedSvgFile);
-    console.log("image editing finished!");
+    console.log("Image editing finished!");
 
     //convert Post.svg to Post.jpg
-    svgConvert.svgConvert();
+    new Promise(svgConvert.svgConvert).then(() => {
+        twitterMessage = `Pollen levels in Toronto ${time}\nTree: ${treeTextValue}\nGrass: ${grassTextValue}\nWeeds: ${weedsTextValue}`;
 
-    twitterMessage = `Pollen levels in Toronto ${time},\nTree: ${treeTextValue}\nGrass: ${grassTextValue}\nWeeds: ${weedsTextValue}`;
-
-    return twitterMessage;
+        resolve(twitterMessage);
+    }).catch((error) => {
+        reject(error);
+    });
 })
 
 
 module.exports = {
-    generate,
-    getInfo
+    generate
 }

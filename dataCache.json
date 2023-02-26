@@ -1,7 +1,7 @@
 {
     "Entries": [
         {
-            "Time": "2023-02-09T01:00:00Z",
+            "Time": "2023-02-24T00:00:00Z",
             "values": {
                 "grassIndex": 0,
                 "treeIndex": 0,
@@ -9,55 +9,15 @@
             }
         },
         {
-            "Time": "2022-02-09T01:00:00Z",
+            "Time": "2023-02-25T00:00:00Z",
             "values": {
                 "grassIndex": 0,
-                "treeIndex": 1,
+                "treeIndex": 0,
                 "weedIndex": 0
             }
         },
         {
-            "Time": "2021-02-09T01:00:00Z",
-            "values": {
-                "grassIndex": 2,
-                "treeIndex": 3,
-                "weedIndex": 5
-            }
-        },
-        {
-            "Time": "2020-02-09T01:00:00Z",
-            "values": {
-                "grassIndex": 4,
-                "treeIndex": 0,
-                "weedIndex": 2
-            }
-        },
-        {
-            "Time": "2019-02-09T01:00:00Z",
-            "values": {
-                "grassIndex": 1,
-                "treeIndex": 1,
-                "weedIndex": 1
-            }
-        },
-        {
-            "Time": "2018-02-09T01:00:00Z",
-            "values": {
-                "grassIndex": 3,
-                "treeIndex": 3,
-                "weedIndex": 3
-            }
-        },
-        {
-            "Time": "2018-02-09T01:00:00Z",
-            "values": {
-                "grassIndex": 5,
-                "treeIndex": 5,
-                "weedIndex": 5
-            }
-        },
-        {
-            "Time": "2023-02-09T02:00:00Z",
+            "Time": "2023-02-26T19:00:00Z",
             "values": {
                 "grassIndex": 0,
                 "treeIndex": 0,
