@@ -19,10 +19,14 @@
   "homepage": "https://github.com/xzippyzachx/PolleenBot#readme",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "env": "^0.0.2",
     "jsdom": "^21.1.0",
     "jsonfile": "^6.1.0",
     "node-cron": "^3.0.2",
     "node-fetch": "^2.6.9",
-    "svg2img": "^1.0.0-beta.2"
+    "svg2img": "^1.0.0-beta.2",
+    "twit": "^2.2.11",
+    "twitter-api-client": "^1.6.1",
+    "twitter-api-v2": "^1.14.2"
   }
 }
