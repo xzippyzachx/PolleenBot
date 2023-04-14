@@ -1,5 +1,5 @@
 const dataCache = require('./dataCache')
-const {redColor,yellowColor,greenColor} = require('./colorSetting.js')
+const {Color1,Color2,Color3} = require('./colorSetting.js')
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 const svgConvert = require('./svgConvertion.js')
@@ -51,54 +51,54 @@ const generate = ((resolve, reject) => {
 
     //Tree
     if(treeValue >= 0 && treeValue <= 1){
-        treeElement1.style = greenColor;
-        treeElement2.style = greenColor;
+        treeElement1.style = Color3;
+        treeElement2.style = Color3;
         treeText.textContent = "Low";
         treeTextValue = "Low";
     }else if(treeValue >= 2 && treeValue <= 3){  
-        treeElement1.style = yellowColor;
-        treeElement2.style = yellowColor;
+        treeElement1.style = Color1;
+        treeElement2.style = Color1;
         treeText.textContent = "Medium";
         treeTextValue = "Medium";
     }else{
-        treeElement1.style = redColor;
-        treeElement2.style = redColor;
+        treeElement1.style = Color2;
+        treeElement2.style = Color2;
         treeText.textContent = "High";
         treeTextValue = "High";
     }
 
     // grass
     if(grassValue >= 0 && grassValue <= 1){
-        grassElement1.style = greenColor;
-        grassElement2.style = greenColor;
+        grassElement1.style = Color3;
+        grassElement2.style = Color3;
         grassText.textContent = "Low";
         grassTextValue = "Low";
     }else if(grassValue >= 2 && grassValue <= 3){  
-        grassElement1.style = yellowColor;
-        grassElement2.style = yellowColor;
+        grassElement1.style = Color1;
+        grassElement2.style = Color1;
         grassText.textContent = "Medium";
         grassTextValue = "Medium";
     }else{
-        grassElement1.style = redColor;
-        grassElement2.style = redColor;
+        grassElement1.style = Color2;
+        grassElement2.style = Color2;
         grassText.textContent = "High";
         grassTextValue = "High";
     }
 
     //weeds
     if(weedsValue >= 0 && weedsValue <= 1){
-        weedsElement1.style = greenColor;
-        weedsElement2.style = greenColor;
+        weedsElement1.style = Color3;
+        weedsElement2.style = Color3;
         weedsText.textContent = "Low";
         weedsTextValue = "Low";
     }else if(weedsValue >= 2 && weedsValue <= 3){  
-        weedsElement1.style = yellowColor;
-        weedsElement2.style = yellowColor;
+        weedsElement1.style = Color1;
+        weedsElement2.style = Color1;
         weedsText.textContent = "Medium";
         weedsTextValue = "Medium";
     }else{
-        weedsElement1.style = redColor;
-        weedsElement2.style = redColor;
+        weedsElement1.style = Color2;
+        weedsElement2.style = Color2;
         weedsText.textContent = "High";
         weedsTextValue = "High";
     }
@@ -119,5 +119,6 @@ const generate = ((resolve, reject) => {
 
 
 module.exports = {
-    generate
+    generate,
+    getInfo
 }
