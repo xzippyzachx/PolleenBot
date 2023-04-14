@@ -1,5 +1,5 @@
 const dataCache = require('./dataCache')
-const {Color1,Color2,Color3} = require('./colorSetting.js')
+const {Color2,Color1,Color3} = require('./colorSetting.js')
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 const svgConvert = require('./svgConvertion.js')
@@ -119,6 +119,5 @@ const generate = ((resolve, reject) => {
 
 
 module.exports = {
-    generate,
-    getInfo
+    generate
 }

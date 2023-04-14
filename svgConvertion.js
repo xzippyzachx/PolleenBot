@@ -11,10 +11,10 @@ const svgConvert = ((resolve, reject) => {
         if (error) {
             reject(error);
         } else {
-            console.log("Image conversion finished!");
             // Save the JPG image buffer to a file
             fs.writeFileSync('./Post.jpg', buffer);
             resolve();
+            console.log("Image conversion finished!");
         }
     });
 });
