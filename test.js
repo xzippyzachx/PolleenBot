@@ -11,3 +11,5 @@ const contentGenerator = require('./contentGenerator')
 // })
 
 // new Promise(poster.makePost)
+
+// console.log(dataCache.updateRequired())

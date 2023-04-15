@@ -14,7 +14,7 @@ let EntriesArray = JSON.parse(fs.readFileSync(cacheFile, 'utf8', (err,jsonString
 
 latestCache = EntriesArray[EntriesArray.length - 1];
 
-const writeCache = ( (newCache) => {
+const writeCache = ((newCache) => {
 
     fs.writeFile(cacheFile, newCache, err =>
     {
@@ -36,7 +36,7 @@ const updateCache = ((split) => {
     writeCache(JSON.stringify({Entries: EntriesArray}, null, 4));
 
     console.log(JSON.stringify(latestCache));
-    console.log(`Cache updated at ${Date.now().toLocaleString()}`)
+    console.log(`Cache updated at ${new Date(Date.now()).toLocaleString()}`)
 })
 
 const fetch = ( () => {
