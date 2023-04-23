@@ -108,7 +108,7 @@ const generate = ((resolve, reject) => {
     console.log("Image editing finished!");
 
     //convert Post.svg to Post.jpg
-    new Promise(svgConvert.svgConvert).then(() => {
+    return new Promise(svgConvert.svgConvert).then(() => {
         twitterMessage = `Pollen levels in Toronto ${time}\nTree: ${treeTextValue}\nGrass: ${grassTextValue}\nWeeds: ${weedsTextValue}`;
 
         resolve(twitterMessage);
