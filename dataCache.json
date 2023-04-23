@@ -391,6 +391,78 @@
                 "treeIndex": 0,
                 "weedIndex": 0
             }
+        },
+        {
+            "Time": "2023-04-15T10:00:00Z",
+            "values": {
+                "grassIndex": 0,
+                "treeIndex": 0,
+                "weedIndex": 0
+            }
+        },
+        {
+            "Time": "2023-04-16T10:00:00Z",
+            "values": {
+                "grassIndex": 0,
+                "treeIndex": 0,
+                "weedIndex": 0
+            }
+        },
+        {
+            "Time": "2023-04-17T10:00:00Z",
+            "values": {
+                "grassIndex": 0,
+                "treeIndex": 0,
+                "weedIndex": 0
+            }
+        },
+        {
+            "Time": "2023-04-18T10:00:00Z",
+            "values": {
+                "grassIndex": 0,
+                "treeIndex": 0,
+                "weedIndex": 0
+            }
+        },
+        {
+            "Time": "2023-04-19T10:00:00Z",
+            "values": {
+                "grassIndex": 0,
+                "treeIndex": 0,
+                "weedIndex": 0
+            }
+        },
+        {
+            "Time": "2023-04-20T10:00:00Z",
+            "values": {
+                "grassIndex": 0,
+                "treeIndex": 0,
+                "weedIndex": 0
+            }
+        },
+        {
+            "Time": "2023-04-21T09:59:00Z",
+            "values": {
+                "grassIndex": 0,
+                "treeIndex": 0,
+                "weedIndex": 0
+            }
+        },
+        {
+            "Time": "2023-04-22T09:59:00Z",
+            "values": {
+                "grassIndex": 0,
+                "treeIndex": 0,
+                "weedIndex": 0
+            }
+        },
+        {
+            "Time": "2023-04-23T10:00:00Z",
+            "values": {
+                "grassIndex": 0,
+                "treeIndex": 0,
+                "weedIndex": 0
+            }
         }
     ]
 }
