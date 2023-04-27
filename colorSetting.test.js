@@ -5,7 +5,7 @@ const dataCache = require('./dataCache');
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 
-test('Change the color of green to black',()=>{
+test('Test Color',()=>{
     return new Promise(contentGenerator.generate).then((text) => {
         let pollenData = dataCache.fetch();
 
